@@ -1,0 +1,10 @@
+db:
+  username: "postgres"
+  host: "localhost"
+  password: "Qwertyuiop123"
+  port: "5432"
+  dbname: "Chat"
+
+qraphql:
+  host: "localhost"
+  port: "8080"

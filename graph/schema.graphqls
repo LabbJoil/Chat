@@ -1,0 +1,43 @@
+
+type UserInfo {
+  ID: ID!
+  userName: String!
+  email: String!
+}
+
+type ChatMessage {
+  ID: ID!
+  content: String!
+  sender: String!
+  createdAt: String!
+  IDChat: ID!
+}
+
+type Chat {
+  Id: ID!
+  title: String!
+  countMembers: Int!
+}
+
+type Query {
+  getFilterMessages(userId: ID!, count: Int!, chatId: ID!, afterMeesageId: ID!): [ChatMessage!]!
+  getAllMessages(userId: ID!, chatId: ID!): [ChatMessage!]!
+  getMembers(userId: ID!, chatId: ID!): [UserInfo!]!
+  getAllChats(userId: ID!): [Chat!]!
+  getUser(userId: ID!): UserInfo!
+}
+
+type Mutation {
+  createUser(name: String!, email: String!): UserInfo!
+  createChat(title: String!, userId: ID!) : Chat!
+  deleteChat(chatId: ID!, userId: ID!): Boolean!
+  deleteUser(userId: ID!): Boolean!
+  deleteMessage(messageId: ID!, userId: ID!): Boolean!
+  concatChat(userId: ID!, chatId: ID!): Boolean!
+  leaveChat(userId: ID!, chatId: ID!): Boolean!
+  sendMessage(senderId: ID!, chatId: ID!, content: String!): ChatMessage!
+}
+
+type Subscription {
+  online(userId: ID!): ChatMessage!
+}
